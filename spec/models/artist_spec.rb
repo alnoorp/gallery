@@ -19,4 +19,24 @@ describe Artist do
 
   it { should have_many(:artworks) }
 
+  describe 'validates uniqueness of email' do
+    before(:each) do
+      FactoryGirl.create(:artist)
+    end
+    it { should validate_uniqueness_of :email }
+  end
+
+  it 'creates a studio without error' do
+    create(:artist)
+    create(:artist)
+  end
+
+  context 'eliteist artist' do
+    it 'shouts their name' do
+      artist = create(:artist)
+      expect(artist.shout!).to eql(artist.name.upcase)
+    end
+
+  end
+
 end

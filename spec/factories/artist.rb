@@ -1,12 +1,10 @@
 FactoryGirl.define do
 
  factory :artist do
-    name 'picasso'
-    email 'ilovecats@yahoo.com'
+    name "picasso"
+    sequence(:email) {|n| "picasso#{n}@yahoo.com"}
     birthplace 'ibiza, spain'
     style 'cool painting'
-
-    artwork
   end
 
 end

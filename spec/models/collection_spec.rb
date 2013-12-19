@@ -9,7 +9,9 @@ describe Collection do
 
   it { should have_valid(:description).when('this is a description') }
   it { should have_valid(:description).when(*blanks) }
-binding.pry
+
   it { should have_many(:artworks).through(:collection_artworks) }
+
+  it { should have_many(:customers).through(:customer_collections) }
 
 end

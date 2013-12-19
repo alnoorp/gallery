@@ -8,7 +8,16 @@ class Artwork < ActiveRecord::Base
   validates_numericality_of :price, :only_integer => true, :allow_blank => true
   belongs_to :art_type,
     inverse_of: :artworks
+
   belongs_to :artist,
     inverse_of: :artworks
+
+  has_many :purchases, inverse_of: :artwork
+
+  has_many :collection_artworks
   has_many :collections, through: :collection_artworks
+
+  def sold?
+    purchases.present?
+  end
 end

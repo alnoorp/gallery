@@ -17,8 +17,8 @@ describe Artwork do
   it { should have_valid(:art_type_id).when(1) }
   it { should_not have_valid(:art_type_id).when(*blanks) }
 
-  it { should have_valid(:purchase_id).when(1) }
-  it { should have_valid(:purchase_id).when(*blanks) }
+  # it { should have_valid(:purchase_id).when(1) }
+  # it { should have_valid(:purchase_id).when(*blanks) }
 
   it { should have_valid(:price).when(1000000) }
   it { should have_valid(:price).when(*blanks) }
@@ -26,5 +26,15 @@ describe Artwork do
 
   it { should belong_to(:art_type) }
   it { should belong_to(:artist) }
+  it { should have_many(:purchases) }
 
+  context 'checks if the art is still available' do
+    it 'is available' do
+      #expect( build(:artwork).sold? ).to_not be_true
+    end
+
+    it 'is sold' do
+      # expect( build(:sold_artwork).sold? ).to be_true
+    end
+  end
 end
