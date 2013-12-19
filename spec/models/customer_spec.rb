@@ -19,10 +19,10 @@ describe Customer do
   end
 
   it "shows customer's favorite collections" do
-    # create(:customer)
-    # 3.times { create(:customer_collections) }
-
-
+    customer = create(:customer)
+    favorite_collection = create(:customer_collection, customer: customer)
+    favorite = favorite_collection.collection
+    expect(customer.collections.first).to eql(favorite)
   end
 
 end
